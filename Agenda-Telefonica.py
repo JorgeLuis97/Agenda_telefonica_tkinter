@@ -2,10 +2,11 @@ from tkinter import messagebox
 from tkinter import ttk
 from customtkinter import *
 
-
 app = CTk()
 
 app.title("Agenda Telefonica")
+
+
 set_appearance_mode(
     "System"
 )
@@ -16,7 +17,6 @@ index = 0
 
 
 # Funções
-
 def adicionar() -> None:
     numero = txt_numero.get()
     nome = txt_nome.get()
@@ -96,9 +96,8 @@ def limparcampos() -> None:
     txt_numero.delete(0, END)
     cb_categorias.set("")
 
+
 # Frame
-
-
 frame_lista = CTkFrame(master=app)
 frame_lista.grid(row=2, column=0, pady=5)
 frame_registro = CTkFrame(master=app)
@@ -133,22 +132,31 @@ lista.grid(row=1, columnspan=1, padx=8)
 lista.bind("<ButtonRelease-1>", listaclique)
 
 # BotõesCTk
-adicionar_botao = CTkButton(master=frame_registro, text="Adicionar", command=lambda: adicionar(), width=80)
+adicionar_botao = CTkButton(master=frame_registro, text="Adicionar", command=lambda: adicionar(), width=80,
+                            fg_color=("gray", "blue"), hover=True, hover_color=("#DB3E39", "#821D1A"))
+
 adicionar_botao.grid(row=1, column=2, padx=5, pady=5)
 
-deletar_botao = CTkButton(master=frame_lista, text="Deletar", command=lambda: deletarcontato(), width=80)
+deletar_botao = CTkButton(master=frame_lista, text="Deletar", command=lambda: deletarcontato(), width=80,
+                          fg_color=("gray", "blue"), hover=True, hover_color=("#DB3E39", "#821D1A"))
+
 deletar_botao.grid(row=1, column=2, padx=5)
 
-editar_botao = CTkButton(master=frame_lista, text="Editar", command=lambda: editarcontato(), width=80)
+editar_botao = CTkButton(master=frame_lista, text="Editar", command=lambda: editarcontato(), width=80,
+                         fg_color=("gray", "blue"), hover=True, hover_color=("#DB3E39", "#821D1A"))
+
 editar_botao.grid(row=1, column=1, padx=5)
 
-limpar_botao = CTkButton(master=frame_registro, text="Limpar", command=lambda: limparcampos(), width=80)
-limpar_botao.grid(row=1, column=3, padx=5, pady=5)
+limpar_botao = CTkButton(master=frame_registro, text="Limpar", command=lambda: limparcampos(), width=80,
+                         fg_color=("gray", "blue"), hover=True, hover_color=("#DB3E39", "#821D1A"))
 
+limpar_botao.grid(row=1, column=3, padx=5, pady=5)
 
 # combobox
 categorias = ["Amigos", "Familia", "Trabalho"]
 cb_categorias = ttk.Combobox(frame_registro, values=categorias, width=15)
 cb_categorias.grid(row=1, column=1, padx=5, pady=5)
+
+
 
 app.mainloop()
